@@ -1,5 +1,11 @@
 class Stock < ApplicationRecord
+has_many :user_stocks
+has_many :users, through: :user_stocks
   
+  def self.find_by_ticker(ticker_symbol)
+    where(ticker: ticker_symbol).first
+  end
+
   def self.new_form_lookup(ticker_symbol)
     # catch the incorrect input 
     begin
@@ -8,7 +14,7 @@ class Stock < ApplicationRecord
       # price = strip_commas(looked_up_stock.close)
       # use .close for last price if it doesn't work use .l
       # use .name if .company_name doesn't work
-      # you may wonder why we only have new insteaf of Stock.new because inside your Stock class you only need new keywork to create an object
+      # you may wonder why we only have new instead of Stock.new because inside your Stock class you only need new keywork to create an object
       new(name: looked_up_stock.company_name, ticker: looked_up_stock.symbol, last_price: looked_up_stock.close)
     rescue Exception => e
       return nil
