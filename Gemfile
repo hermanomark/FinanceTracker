@@ -11,7 +11,9 @@ gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
 # encountered an error using devise-bootstrap-views 1.0, use 0.0.11 instead
 gem 'devise-bootstrap-views', '~> 0.0.11'
-
+gem 'stock_quote'
+# added font-awersome for icons
+gem 'font-awesome-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
