@@ -6,6 +6,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  def full_name
+    return "#{first_name} #{last_name}".strip if (first_name || last_name)
+    "Anonymous"
+  end
+
   # checks if stock is already added by the user
   def stock_already_added?(ticker_symbol)
     # the method find_by_ticker, simply looks for the ticker_symbol in the table see if it exist there

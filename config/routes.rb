@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   get 'users/my_portfolio'
-  devise_for :users
+  
+  # added :controllers... for first_name and last_name
+  # it means look at registrations controller first
+  devise_for :users , :controllers => { :registrations => "user/registrations" }
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'financetrackers#index'
   resources :financetrackers, only: [:index]
