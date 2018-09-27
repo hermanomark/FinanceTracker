@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/my_portfolio'
   
   # added :controllers... for first_name and last_name
   # it means look at registrations controller first
@@ -10,7 +9,8 @@ Rails.application.routes.draw do
   resources :financetrackers, only: [:index]
 
   get 'my_portfolio', to: "users#my_portfolio"
-
+  get 'my_friends', to: "users#my_friends"
+  
   #search_stocks is the url, send the params to search controller and search action
   get 'search_stocks', to: 'stocks#search'
 
